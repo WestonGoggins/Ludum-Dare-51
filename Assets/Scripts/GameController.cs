@@ -47,6 +47,25 @@ public class GameController : MonoBehaviour
         dimensionShiftTimer -= Time.deltaTime;
         if (dimensionShiftTimer < 0.0f)
         {
+            int rand = Random.Range(0, 2);
+            switch (currentDimension)
+            {
+                case Dimension.Overworld:
+                    if (rand == 0) currentDimension = Dimension.Hell;
+                    else currentDimension = Dimension.Faerie;
+                    break;
+                case Dimension.Hell:
+                    if (rand == 0) currentDimension = Dimension.Overworld;
+                    else currentDimension = Dimension.Faerie;
+                    break;
+                case Dimension.Faerie:
+                    if (rand == 0) currentDimension = Dimension.Overworld;
+                    else currentDimension = Dimension.Hell;
+                    break;
+                default:
+                    Debug.LogError("Invalid Dimension!");
+                    break;
+            }
             dimensionShiftTimer = dimensionShiftTimeStart;
         }
     }
