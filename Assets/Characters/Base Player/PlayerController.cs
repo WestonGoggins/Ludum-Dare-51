@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
         Barbarian
     }
 
+    public BoxCollider hitBox;
+    public BoxCollider hurtBox;
+
     public PlayerClass characterClass;
 
     void Start()

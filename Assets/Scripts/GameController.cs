@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
     public Transform knight;
     public Transform mage;
     public Transform barbarian;
+    public Camera mainCamera;
     #endregion
 
     #region PRIVATE VARIABLES
@@ -35,10 +36,12 @@ public class GameController : MonoBehaviour
         dimensionShiftTimer = dimensionShiftTimeStart;
         levelTimer = levelTimeStart;
         currentDimension = startingDimension;
+        ChangeToCurrentDimension();
     }
 
     void Update()
     {
+
         levelTimer -= Time.deltaTime;
         if (levelTimer <= 0.0f)
         {
@@ -66,7 +69,24 @@ public class GameController : MonoBehaviour
                     Debug.LogError("Invalid Dimension!");
                     break;
             }
+            ChangeToCurrentDimension();
             dimensionShiftTimer = dimensionShiftTimeStart;
+        }
+    }
+
+    private void ChangeToCurrentDimension()
+    {
+        switch (currentDimension)
+        {
+            case Dimension.Overworld:
+                mainCamera.backgroundColor = Color.green;
+                break;
+            case Dimension.Hell:
+                mainCamera.backgroundColor = Color.red;
+                break;
+            case Dimension.Faerie:
+                mainCamera.backgroundColor = Color.blue;
+                break;
         }
     }
 }

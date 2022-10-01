@@ -894,6 +894,7 @@ MonoBehaviour:
   knight: {fileID: 1304089519}
   mage: {fileID: 1505075359}
   barbarian: {fileID: 1008272418}
+  mainCamera: {fileID: 519420031}
 --- !u!4 &1845636658
 Transform:
   m_ObjectHideFlags: 0
@@ -920,9 +921,25 @@ PrefabInstance:
       propertyPath: characterClass
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5662061195463375410, guid: 5b7330939c871094bbe3059f98cfaf22, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5662061195463375410, guid: 5b7330939c871094bbe3059f98cfaf22, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8689807679600929307, guid: 5b7330939c871094bbe3059f98cfaf22, type: 3}
       propertyPath: m_Name
       value: Barbarian
+      objectReference: {fileID: 0}
+    - target: {fileID: 8689807679600929307, guid: 5b7330939c871094bbe3059f98cfaf22, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8689807679600929307, guid: 5b7330939c871094bbe3059f98cfaf22, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 8689807679600929310, guid: 5b7330939c871094bbe3059f98cfaf22, type: 3}
       propertyPath: m_RootOrder
@@ -1090,6 +1107,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5339194019006396575, guid: 55eff16555ff5c045bd7beb1c53c4510, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339194019006396575, guid: 55eff16555ff5c045bd7beb1c53c4510, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5681667423441701042, guid: 55eff16555ff5c045bd7beb1c53c4510, type: 3}
       propertyPath: characterClass
       value: 1
@@ -1141,6 +1166,14 @@ PrefabInstance:
     - target: {fileID: 8940604102128773302, guid: 55eff16555ff5c045bd7beb1c53c4510, type: 3}
       propertyPath: m_Name
       value: Mage
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940604102128773302, guid: 55eff16555ff5c045bd7beb1c53c4510, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940604102128773302, guid: 55eff16555ff5c045bd7beb1c53c4510, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55eff16555ff5c045bd7beb1c53c4510, type: 3}
@@ -1198,6 +1231,22 @@ PrefabInstance:
     - target: {fileID: 5997088975542857159, guid: db6be13651a8a114799b5c7c1dfca9f1, type: 3}
       propertyPath: m_Name
       value: Knight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997088975542857159, guid: db6be13651a8a114799b5c7c1dfca9f1, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5997088975542857159, guid: db6be13651a8a114799b5c7c1dfca9f1, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7291952344829902318, guid: db6be13651a8a114799b5c7c1dfca9f1, type: 3}
+      propertyPath: m_Size.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7291952344829902318, guid: db6be13651a8a114799b5c7c1dfca9f1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db6be13651a8a114799b5c7c1dfca9f1, type: 3}
