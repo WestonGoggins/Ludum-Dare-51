@@ -7,6 +7,7 @@ public class SpawnerController : MonoBehaviour
     public Transform spawner1;
     public Transform spawner2;
     public Transform spawner3;
+    public Round[] rounds;
 
     // Start is called before the first frame update
     void Start()

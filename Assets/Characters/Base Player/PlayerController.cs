@@ -36,7 +36,8 @@ public class PlayerController : MonoBehaviour
     public int currentLane;
     
     private Animator animator;
-    private float attackCooldown = 0.0f;
+    [HideInInspector]
+    public float attackCooldown = 0.0f;
     private float hurtBoxTimer = 0.0f;
     #endregion
 

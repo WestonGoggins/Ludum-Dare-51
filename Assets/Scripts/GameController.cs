@@ -106,7 +106,7 @@ public class GameController : MonoBehaviour
         if (swapCooldown <= 0.0f &&(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
         {
             if (!swapping) swapping = true;
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.UpArrow) && knight.attackCooldown <= 0.0f)
             {
                 if (!knight.inSwapState) knight.inSwapState = true;
                 if (mage.inSwapState)
@@ -130,7 +130,7 @@ public class GameController : MonoBehaviour
                     swapCooldown = swapCooldownStart;
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) && mage.attackCooldown < 0.0f)
             {
                 if (!mage.inSwapState) mage.inSwapState = true;
                 if (knight.inSwapState)
@@ -154,7 +154,7 @@ public class GameController : MonoBehaviour
                     swapCooldown = swapCooldownStart;
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            else if (Input.GetKeyDown(KeyCode.RightArrow) && barbarian.attackCooldown < 0.0f)
             {
                 if (!barbarian.inSwapState) barbarian.inSwapState = true;
                 if (knight.inSwapState)
