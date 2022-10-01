@@ -1552,6 +1552,9 @@ MonoBehaviour:
   mage: {fileID: 1505075359}
   barbarian: {fileID: 1008272418}
   mainCamera: {fileID: 519420031}
+  lanePosition1: {fileID: 1040579739}
+  lanePosition2: {fileID: 428837291}
+  lanePosition3: {fileID: 568954936}
 --- !u!4 &1845636658
 Transform:
   m_ObjectHideFlags: 0
@@ -1617,6 +1620,26 @@ PrefabInstance:
     - target: {fileID: 8689807679600929307, guid: 5b7330939c871094bbe3059f98cfaf22, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8689807679600929309, guid: 5b7330939c871094bbe3059f98cfaf22, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -557554758, guid: 7f13b57996627c240b8288b79240576c, type: 3}
+    - target: {fileID: 8689807679600929309, guid: 5b7330939c871094bbe3059f98cfaf22, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8689807679600929309, guid: 5b7330939c871094bbe3059f98cfaf22, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8689807679600929309, guid: 5b7330939c871094bbe3059f98cfaf22, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8689807679600929309, guid: 5b7330939c871094bbe3059f98cfaf22, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8689807679600929310, guid: 5b7330939c871094bbe3059f98cfaf22, type: 3}
       propertyPath: m_RootOrder
@@ -1810,6 +1833,14 @@ PrefabInstance:
       objectReference: {fileID: 568954936}
     - target: {fileID: 5681667423441701042, guid: 55eff16555ff5c045bd7beb1c53c4510, type: 3}
       propertyPath: characterClass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8940604102128773296, guid: 55eff16555ff5c045bd7beb1c53c4510, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -934629322, guid: 5c559f7c14b12b14a96e386846d2590a, type: 3}
+    - target: {fileID: 8940604102128773296, guid: 55eff16555ff5c045bd7beb1c53c4510, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8940604102128773299, guid: 55eff16555ff5c045bd7beb1c53c4510, type: 3}

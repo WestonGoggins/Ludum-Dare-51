@@ -27,13 +27,15 @@ public class PlayerController : MonoBehaviour
 
     private int currentLane;
     private bool inSwapState = false;
+    private Animator animator;
     #endregion
 
     void Start()
     {
-        hitBox.GetComponent<BoxCollider2D>();
-        hurtBox.GetComponentInChildren<BoxCollider2D>();
+        hitBox = GetComponent<BoxCollider2D>();
+        hurtBox = GetComponentInChildren<BoxCollider2D>();
         hurtBox.enabled = false;
+        animator = GetComponent<Animator>();
         currentLane = startingLane;
     }
 
