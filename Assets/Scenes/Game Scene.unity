@@ -208,6 +208,8 @@ MonoBehaviour:
   spawner1: {fileID: 1491016067}
   spawner2: {fileID: 943608825}
   spawner3: {fileID: 1191148688}
+  rounds:
+  - {fileID: 0}
 --- !u!1 &349046539
 GameObject:
   m_ObjectHideFlags: 0

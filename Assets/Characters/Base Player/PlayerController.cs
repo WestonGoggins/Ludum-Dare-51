@@ -43,6 +43,10 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        if (gameController == null)
+        {
+            gameController = FindObjectOfType<GameController>();
+        }
         hitBox = GetComponent<BoxCollider2D>();
         hurtBox = transform.Find("Hurtbox").GetComponent<BoxCollider2D>();
         hurtBox.enabled = false;

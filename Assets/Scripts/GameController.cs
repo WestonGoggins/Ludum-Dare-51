@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    enum Dimension
+    public enum Dimension
     {
         Overworld,
         Hell,
@@ -30,9 +30,11 @@ public class GameController : MonoBehaviour
 
     #region CLASS VARIABLES
     private float dimensionShiftTimer;
-    private float levelTimer;
+    [HideInInspector]
+    public float roundTimer;
     private float swapCooldown = 0.0f;
-    private Dimension currentDimension;
+    [HideInInspector]
+    public Dimension currentDimension;
     [HideInInspector]
     public bool swapping = false;
     #endregion
@@ -40,7 +42,7 @@ public class GameController : MonoBehaviour
     void Awake()
     {
         dimensionShiftTimer = dimensionShiftTimeStart;
-        levelTimer = levelTimeStart;
+        roundTimer = levelTimeStart;
         currentDimension = startingDimension;
         ChangeToCurrentDimension();
     }
@@ -53,8 +55,8 @@ public class GameController : MonoBehaviour
 
     private void HandleTimers()
     {
-        levelTimer -= Time.deltaTime;
-        if (levelTimer <= 0.0f)
+        roundTimer -= Time.deltaTime;
+        if (roundTimer <= 0.0f)
         {
 
         }
