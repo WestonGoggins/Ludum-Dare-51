@@ -23,9 +23,12 @@ public class GameController : MonoBehaviour
     public Transform mage;
     public Transform barbarian;
     public Camera mainCamera;
+    public Transform lanePosition1;
+    public Transform lanePosition2;
+    public Transform lanePosition3;
     #endregion
 
-    #region PRIVATE VARIABLES
+    #region CLASS VARIABLES
     private float dimensionShiftTimer;
     private float levelTimer;
     private Dimension currentDimension;

@@ -11,18 +11,68 @@ public class PlayerController : MonoBehaviour
         Barbarian
     }
 
-    public BoxCollider hitBox;
-    public BoxCollider hurtBox;
-
+    #region SERIALIZED FIELDS
+    public GameController gameController;
     public PlayerClass characterClass;
+
+    [SerializeField]
+    private int startingLane;
+    #endregion
+
+    #region CLASS VARIABLES
+    [HideInInspector]
+    public BoxCollider2D hitBox;
+    [HideInInspector]
+    public BoxCollider2D hurtBox;
+
+    private int currentLane;
+    private bool inSwapState = false;
+    #endregion
 
     void Start()
     {
-        
+        hitBox.GetComponent<BoxCollider2D>();
+        hurtBox.GetComponentInChildren<BoxCollider2D>();
+        hurtBox.enabled = false;
+        currentLane = startingLane;
     }
 
     void Update()
     {
-        
+        switch (characterClass)
+        {
+            case PlayerClass.Knight:
+                HandleKnight();
+                break;
+            case PlayerClass.Mage:
+                HandleMage();
+                break;
+            case PlayerClass.Barbarian:
+                HandleBarbarian();
+                break;
+            default:
+                Debug.Log("Invalid Character Class!");
+                break;
+        }    
     }
+
+    private void HandleKnight()
+    {
+
+    }
+
+    private void HandleMage()
+    {
+
+    }
+
+    private void HandleBarbarian()
+    {
+
+    }
+
+    private void GoToLane(Vector2 position, int lane)
+    {
+
+    }    
 }
