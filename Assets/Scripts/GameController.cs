@@ -17,21 +17,24 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private float levelTimeStart = 120.0f;
     [SerializeField]
+    private float swapCooldownStart = 2.0f;
+    [SerializeField]
     private Dimension startingDimension = Dimension.Overworld;
 
-    public Transform knight;
-    public Transform mage;
-    public Transform barbarian;
+    public PlayerController knight;
+    public PlayerController mage;
+    public PlayerController barbarian;
     public Camera mainCamera;
-    public Transform lanePosition1;
-    public Transform lanePosition2;
-    public Transform lanePosition3;
+    public Transform[] lanePositions;
     #endregion
 
     #region CLASS VARIABLES
     private float dimensionShiftTimer;
     private float levelTimer;
+    private float swapCooldown;
     private Dimension currentDimension;
+    [HideInInspector]
+    public bool swapping = false;
     #endregion
 
     void Awake()
@@ -40,11 +43,17 @@ public class GameController : MonoBehaviour
         levelTimer = levelTimeStart;
         currentDimension = startingDimension;
         ChangeToCurrentDimension();
+        swapCooldown = 0.0f;
     }
 
     void Update()
     {
+        HandleTimers();
+        HandleSwap();
+    }
 
+    private void HandleTimers()
+    {
         levelTimer -= Time.deltaTime;
         if (levelTimer <= 0.0f)
         {
@@ -75,8 +84,8 @@ public class GameController : MonoBehaviour
             ChangeToCurrentDimension();
             dimensionShiftTimer = dimensionShiftTimeStart;
         }
+        if (swapCooldown > 0.0f) swapCooldown -= Time.deltaTime;
     }
-
     private void ChangeToCurrentDimension()
     {
         switch (currentDimension)
@@ -90,6 +99,94 @@ public class GameController : MonoBehaviour
             case Dimension.Faerie:
                 mainCamera.backgroundColor = Color.blue;
                 break;
+        }
+    }
+
+    private void HandleSwap()
+    {
+        if (swapCooldown <= 0.0f &&(Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
+        {
+            if (!swapping) swapping = true;
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                if (!knight.inSwapState) knight.inSwapState = true;
+                if (mage.inSwapState)
+                {
+                    int knightLane = knight.currentLane;
+                    knight.GoToLane(lanePositions[mage.currentLane - 1].position, mage.currentLane);
+                    mage.GoToLane(lanePositions[knightLane - 1].position, knightLane);
+                    knight.inSwapState = false;
+                    mage.inSwapState = false;
+                    barbarian.inSwapState = false;
+                    swapCooldown = swapCooldownStart;
+                }
+                else if (barbarian.inSwapState)
+                {
+                    int knightLane = knight.currentLane;
+                    knight.GoToLane(lanePositions[barbarian.currentLane - 1].position, barbarian.currentLane);
+                    barbarian.GoToLane(lanePositions[knightLane - 1].position, knightLane);
+                    knight.inSwapState = false;
+                    mage.inSwapState = false;
+                    barbarian.inSwapState = false;
+                    swapCooldown = swapCooldownStart;
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                if (!mage.inSwapState) mage.inSwapState = true;
+                if (knight.inSwapState)
+                {
+                    int mageLane = mage.currentLane;
+                    mage.GoToLane(lanePositions[knight.currentLane - 1].position, knight.currentLane);
+                    knight.GoToLane(lanePositions[mageLane - 1].position, mageLane);
+                    knight.inSwapState = false;
+                    mage.inSwapState = false;
+                    barbarian.inSwapState = false;
+                    swapCooldown = swapCooldownStart;
+                }
+                else if (barbarian.inSwapState)
+                {
+                    int mageLane = mage.currentLane;
+                    mage.GoToLane(lanePositions[barbarian.currentLane - 1].position, barbarian.currentLane);
+                    barbarian.GoToLane(lanePositions[mageLane - 1].position, mageLane);
+                    knight.inSwapState = false;
+                    mage.inSwapState = false;
+                    barbarian.inSwapState = false;
+                    swapCooldown = swapCooldownStart;
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                if (!barbarian.inSwapState) barbarian.inSwapState = true;
+                if (knight.inSwapState)
+                {
+                    int barbarianLane = barbarian.currentLane;
+                    barbarian.GoToLane(lanePositions[knight.currentLane - 1].position, knight.currentLane);
+                    knight.GoToLane(lanePositions[barbarianLane - 1].position, barbarianLane);
+                    knight.inSwapState = false;
+                    mage.inSwapState = false;
+                    barbarian.inSwapState = false;
+                    swapCooldown = swapCooldownStart;
+                }
+                else if (mage.inSwapState)
+                {
+                    int barbarianLane = mage.currentLane;
+                    barbarian.GoToLane(lanePositions[mage.currentLane - 1].position, mage.currentLane);
+                    mage.GoToLane(lanePositions[barbarianLane - 1].position, barbarianLane);
+                    knight.inSwapState = false;
+                    mage.inSwapState = false;
+                    barbarian.inSwapState = false;
+                    swapCooldown = swapCooldownStart;
+                }
+            }
+            
+        }
+        else
+        {
+            if (swapping) swapping = false;
+            if (knight.inSwapState) knight.inSwapState = false;
+            if (mage.inSwapState) mage.inSwapState = false;
+            if (barbarian.inSwapState) barbarian.inSwapState = false;
         }
     }
 }

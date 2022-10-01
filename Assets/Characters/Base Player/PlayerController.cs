@@ -24,9 +24,11 @@ public class PlayerController : MonoBehaviour
     public BoxCollider2D hitBox;
     [HideInInspector]
     public BoxCollider2D hurtBox;
-
-    private int currentLane;
-    private bool inSwapState = false;
+    [HideInInspector]
+    public bool inSwapState = false;
+    [HideInInspector]
+    public int currentLane;
+    
     private Animator animator;
     #endregion
 
@@ -73,8 +75,9 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void GoToLane(Vector2 position, int lane)
+    public void GoToLane(Vector3 pos, int lane)
     {
-
+        transform.position = pos;
+        currentLane = lane;
     }    
 }
