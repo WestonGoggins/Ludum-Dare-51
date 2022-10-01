@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7b64694bad4903a41a58d0bf9226ce5c
+guid: 2da0d0b4684460c45999aa5b57abb2cd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,12 +116,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: S_Mage_0
+      name: SwordSwipe_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
+        width: 80
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -130,19 +130,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 274222dfaef9ac648bb28c8c0d8a35f2
-      internalID: 1624116456
+      spriteID: 99884817b260e3d48aba20aef9bed02e
+      internalID: -2033923655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: S_Mage_1
+      name: SwordSwipe_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 80
         y: 0
-        width: 32
+        width: 80
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -151,19 +151,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 074222c8cd13fac408b4674807c26e19
-      internalID: -1836802372
+      spriteID: d73233f1e7abd304f910e580834b8d79
+      internalID: 2034659372
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: S_Mage_2
+      name: SwordSwipe_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 160
         y: 0
-        width: 32
+        width: 80
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -172,29 +172,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0d0b67bfd2d16d34c90ad9d3ae36094f
-      internalID: 1612068267
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: S_Mage_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5b75b7eb415e59948a27a5e21ea9a1e9
-      internalID: 1345445588
+      spriteID: 57eb9c90496f5da468b83884aa2188b2
+      internalID: 1237479249
       vertices: []
       indices: 
       edges: []
@@ -210,10 +189,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      S_Mage_1: -1836802372
-      S_Mage_3: 1345445588
-      S_Mage_2: 1612068267
-      S_Mage_0: 1624116456
+      SwordSwipe_2: 1237479249
+      SwordSwipe_0: -2033923655
+      SwordSwipe_1: 2034659372
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

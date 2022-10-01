@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7f13b57996627c240b8288b79240576c
+guid: ca09e8063e174d74398e8b9744b230c9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Barbarian_0
+      name: S_Barbarian_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb0edbf220921e249a759a49ef687182
-      internalID: -557554758
+      spriteID: 40e80d511e41ba54e88b34ce1e24c6f1
+      internalID: 1490909490
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Barbarian_1
+      name: S_Barbarian_1
       rect:
         serializedVersion: 2
         x: 32
@@ -151,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23cac49162a99fe43b9b4875fa47eabe
-      internalID: -1787946004
+      spriteID: 411dee7d6020b0741a5ca77c356bd2c9
+      internalID: 652716972
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Barbarian_2
+      name: S_Barbarian_2
       rect:
         serializedVersion: 2
         x: 64
@@ -172,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3df6363c27496e468a051c661babf1a
-      internalID: -1154218915
+      spriteID: 1c583cdcc0b23924fbedf89126147eb2
+      internalID: -1839391576
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Barbarian_3
+      name: S_Barbarian_3
       rect:
         serializedVersion: 2
         x: 96
@@ -193,8 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0817af241cd9b749bda1fe4784ea119
-      internalID: 238803104
+      spriteID: 919a52adeb9755349b4e27bfa954f6e3
+      internalID: -2050846508
       vertices: []
       indices: 
       edges: []
@@ -210,10 +210,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Barbarian_1: -1787946004
-      Barbarian_0: -557554758
-      Barbarian_2: -1154218915
-      Barbarian_3: 238803104
+      S_Barbarian_3: -2050846508
+      S_Barbarian_2: -1839391576
+      S_Barbarian_1: 652716972
+      S_Barbarian_0: 1490909490
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

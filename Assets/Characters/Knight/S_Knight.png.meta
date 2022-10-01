@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 21240ca78185d8a4aafd5e468be05d3a
+guid: d6894fdb9cacf674dbbe4d6168c4759c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Knight_0
+      name: S_Knight_0
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b8b0106fedb7b3479cef7c8bc121de4
-      internalID: -349712281
+      spriteID: f5e02f9fcc063754ca67689b6985d06a
+      internalID: -1970740699
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Knight_1
+      name: S_Knight_1
       rect:
         serializedVersion: 2
         x: 32
@@ -151,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90144e5bd039ce74da5adf0771ef9151
-      internalID: 1118952486
+      spriteID: 04455f864dc6ea149b34591b3c124de6
+      internalID: 1110984794
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Knight_2
+      name: S_Knight_2
       rect:
         serializedVersion: 2
         x: 64
@@ -172,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a9c61ad608e37843a444ac297529917
-      internalID: -1181462768
+      spriteID: da15fdddb9e248447b1b1bfab03f1060
+      internalID: 562395890
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Knight_3
+      name: S_Knight_3
       rect:
         serializedVersion: 2
         x: 96
@@ -193,8 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0cbc122cb37e0144bb84df9f28950dc
-      internalID: -467480984
+      spriteID: 5e9ff5bf4c8c0bf4180e347c4c34585a
+      internalID: 134257892
       vertices: []
       indices: 
       edges: []
@@ -210,10 +210,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Knight_2: -1181462768
-      Knight_3: -467480984
-      Knight_0: -349712281
-      Knight_1: 1118952486
+      S_Knight_2: 562395890
+      S_Knight_0: -1970740699
+      S_Knight_3: 134257892
+      S_Knight_1: 1110984794
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

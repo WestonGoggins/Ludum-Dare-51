@@ -17,6 +17,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private int startingLane;
+    [SerializeField]
+    private float attackCooldownStart = 0.5f;
+    [SerializeField]
+    private float hurtBoxTimeStart = 0.2f;
+
+    public GameObject swordSwipe;
     #endregion
 
     #region CLASS VARIABLES
@@ -30,12 +36,14 @@ public class PlayerController : MonoBehaviour
     public int currentLane;
     
     private Animator animator;
+    private float attackCooldown = 0.0f;
+    private float hurtBoxTimer = 0.0f;
     #endregion
 
     void Start()
     {
         hitBox = GetComponent<BoxCollider2D>();
-        hurtBox = GetComponentInChildren<BoxCollider2D>();
+        hurtBox = transform.Find("Hurtbox").GetComponent<BoxCollider2D>();
         hurtBox.enabled = false;
         animator = GetComponent<Animator>();
         currentLane = startingLane;
@@ -43,6 +51,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (attackCooldown > 0.0f) attackCooldown -= Time.deltaTime;
+        if (hurtBoxTimer > 0.0f) hurtBoxTimer -= Time.deltaTime;
+        if (hurtBoxTimer <= 0.0f && hurtBox.enabled)
+        {
+            hurtBox.enabled = false;
+            Destroy(hurtBox.transform.GetChild(0).gameObject);
+        }
         switch (characterClass)
         {
             case PlayerClass.Knight:
@@ -62,7 +77,14 @@ public class PlayerController : MonoBehaviour
 
     private void HandleKnight()
     {
-
+        if (Input.GetKeyDown(KeyCode.UpArrow) && attackCooldown <= 0.0f && !inSwapState)
+        {
+            attackCooldown = attackCooldownStart;
+            hurtBoxTimer = hurtBoxTimeStart;
+            hurtBox.enabled = true;
+            animator.Play("knightattack");
+            Instantiate(swordSwipe, hurtBox.transform);
+        }
     }
 
     private void HandleMage()

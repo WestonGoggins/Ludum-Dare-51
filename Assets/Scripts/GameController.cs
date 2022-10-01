@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour
     #region CLASS VARIABLES
     private float dimensionShiftTimer;
     private float levelTimer;
-    private float swapCooldown;
+    private float swapCooldown = 0.0f;
     private Dimension currentDimension;
     [HideInInspector]
     public bool swapping = false;
@@ -43,7 +43,6 @@ public class GameController : MonoBehaviour
         levelTimer = levelTimeStart;
         currentDimension = startingDimension;
         ChangeToCurrentDimension();
-        swapCooldown = 0.0f;
     }
 
     void Update()

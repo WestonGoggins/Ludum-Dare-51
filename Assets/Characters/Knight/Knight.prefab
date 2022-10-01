@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3265617089107135436}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.5, y: 1}
   m_EdgeRadius: 0
 --- !u!1001 &69659357272880192
 PrefabInstance:
@@ -72,7 +72,7 @@ PrefabInstance:
     - target: {fileID: 6038916393052445057, guid: f97d7ad7c82849642864c707768c453a, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -349712281, guid: 21240ca78185d8a4aafd5e468be05d3a, type: 3}
+      objectReference: {fileID: -1970740699, guid: d6894fdb9cacf674dbbe4d6168c4759c, type: 3}
     - target: {fileID: 6038916393052445057, guid: f97d7ad7c82849642864c707768c453a, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -91,7 +91,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6038916393052445058, guid: f97d7ad7c82849642864c707768c453a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 6038916393052445058, guid: f97d7ad7c82849642864c707768c453a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -133,6 +133,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Knight
       objectReference: {fileID: 0}
+    - target: {fileID: 6990910512041261443, guid: f97d7ad7c82849642864c707768c453a, type: 3}
+      propertyPath: swordSwipe
+      value: 
+      objectReference: {fileID: 2798370856484624995, guid: b7c088dbc1663ca43a6a4fc2d6c0fdb5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f97d7ad7c82849642864c707768c453a, type: 3}
 --- !u!4 &5997088975542857154 stripped
