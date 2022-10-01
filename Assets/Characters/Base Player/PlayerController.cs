@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     public BoxCollider2D hurtBox;
     [HideInInspector]
     public bool inSwapState = false;
-    [HideInInspector]
+    //[HideInInspector]
     public int currentLane;
     
     private Animator animator;
@@ -82,7 +82,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleKnight()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && attackCooldown <= 0.0f && !inSwapState)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && attackCooldown <= 0.0f && !gameController.swapping && 
+            !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift))
         {
             attackCooldown = attackCooldownStart;
             hurtBoxTimer = hurtBoxTimeStart;

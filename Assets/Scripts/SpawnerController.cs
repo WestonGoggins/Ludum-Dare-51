@@ -21,13 +21,17 @@ public class SpawnerController : MonoBehaviour
         {
             gameController = FindObjectOfType<GameController>();
         }
+        if (currentRound == 0) currentRound = 1;
     }
 
     void Update()
     {
         if (gameController.roundTimer >= roundIndex)
         {
-            SpawnEnemy(rounds[currentRound].spawnAtIndex[roundIndex]);
+            if (rounds[currentRound].spawnAtIndex[roundIndex] != null)
+            {
+                SpawnEnemy(rounds[currentRound].spawnAtIndex[roundIndex]);
+            }
             roundIndex++;
         }
     }

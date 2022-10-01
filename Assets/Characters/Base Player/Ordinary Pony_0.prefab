@@ -130,6 +130,7 @@ MonoBehaviour:
   hurtBox: {fileID: 0}
   inSwapState: 0
   currentLane: 0
+  attackCooldown: 0
 --- !u!61 &-1890030985796286034
 BoxCollider2D:
   m_ObjectHideFlags: 0
