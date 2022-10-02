@@ -42,8 +42,10 @@ public class PlayerController : MonoBehaviour
     public float attackCooldown = 0.0f;
     private float hurtBoxTimer = 0.0f;
     private List<EnemyController> enemiesHit;
-    private float castLength;
+    private float castLength = 0.0f;
     private LightningBallController lightningBall;
+    private float throwLength = 4.0f;
+    private AxeController axe;
     #endregion
 
     void Start()
@@ -61,7 +63,12 @@ public class PlayerController : MonoBehaviour
         if (characterClass == PlayerClass.Mage)
         {
             lightningBall = transform.Find("LightningBall").GetComponent<LightningBallController>();
-            lightningBall.enabled = false;
+            lightningBall.gameObject.SetActive(false);
+        }
+        if (characterClass == PlayerClass.Barbarian)
+        {
+            axe = transform.Find("Axe").GetComponent<AxeController>();
+            axe.gameObject.SetActive(false);
         }
         //implement throwing axe here
         animator = GetComponent<Animator>();
@@ -129,24 +136,51 @@ public class PlayerController : MonoBehaviour
     private void HandleMage()
     {
         if (Input.GetKey(KeyCode.LeftArrow) && attackCooldown <= 0.0f && !gameController.swapping &&
-           !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift))
+           !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift) && !lightningBall.isActiveAndEnabled)
         {
-            castLength += 0.01f;
+            if (castLength <= 17.0f) castLength += (6.0f * Time.deltaTime);
+            else gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
         }
         else if (Input.GetKeyUp(KeyCode.LeftArrow) && attackCooldown <= 0.0f && !gameController.swapping &&
-           !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift))
+           !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift) && !lightningBall.isActiveAndEnabled)
         {
+            attackCooldown = attackCooldownStart;
+            lightningBall.gameObject.SetActive(true);
+            lightningBall.Reset();
             lightningBall.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             lightningBall.castLength = castLength;
-            lightningBall.enabled = true;
+            animator.Play("mageattack");
         }
-        
-        castLength = 0;
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            castLength = 0;
+        }
     }
 
     private void HandleBarbarian()
     {
-
+        if (Input.GetKey(KeyCode.RightArrow) && attackCooldown <= 0.0f && !gameController.swapping &&
+           !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift) && !axe.isActiveAndEnabled)
+        {
+            if (throwLength <= 17.0f) throwLength += (6.0f * Time.deltaTime);
+            else gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        }
+        else if (Input.GetKeyUp(KeyCode.RightArrow) && attackCooldown <= 0.0f && !gameController.swapping &&
+           !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift) && !axe.isActiveAndEnabled)
+        {
+            attackCooldown = attackCooldownStart;
+            axe.gameObject.SetActive(true);
+            axe.transform.position = new Vector3(transform.position.x + throwLength, transform.position.y, transform.position.z);
+            axe.Reset();
+            axe.throwLength = throwLength;
+            animator.Play("barbarianattack");
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            throwLength = 4.0f;
+        }
     }
 
     public void GoToLane(Vector3 pos, int lane)

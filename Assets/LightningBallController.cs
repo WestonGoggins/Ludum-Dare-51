@@ -6,11 +6,12 @@ public class LightningBallController : MonoBehaviour
 {
     public float castLength = 0.0f;
     public int damage = 5;
-    public float speed = 0.01f;
+    public float speed = 5.0f;
     private float counter = 0.0f;
     private List<EnemyController> enemiesHit;
     [HideInInspector]
     public BoxCollider2D hurtBox;
+    private float globalY = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +21,12 @@ public class LightningBallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y, transform.position.z);
+        transform.position = new Vector3(transform.position.x + (speed * Time.deltaTime), globalY, transform.position.z);
         counter += speed * Time.deltaTime;
         if (counter > castLength)
         {
-            enabled = false;
+            transform.position = new Vector3(-100f, 0f, 0f);
+            gameObject.SetActive(false);
         }
 
         ContactFilter2D filter = new ContactFilter2D();
@@ -42,5 +44,12 @@ public class LightningBallController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Reset()
+    {
+        globalY = transform.parent.position.y;
+        counter = 0.0f;
+        enemiesHit = new List<EnemyController>();
     }
 }

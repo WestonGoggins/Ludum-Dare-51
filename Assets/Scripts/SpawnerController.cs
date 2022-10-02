@@ -11,6 +11,7 @@ public class SpawnerController : MonoBehaviour
     public int currentRound = 0;
 
     public GameController gameController;
+    public List<EnemyController> activeEnemies;
 
     private int roundIndex = 0;
 
@@ -54,6 +55,8 @@ public class SpawnerController : MonoBehaviour
             spawner = spawner1;
             Debug.LogWarning("Invalid Spawner Number!");
         }
-        Instantiate(enemy.gameObject, spawner);
+        GameObject obj = Instantiate(enemy.gameObject, spawner);
+        obj.GetComponent<EnemyController>().lane = rand;
+        activeEnemies.Add(obj.GetComponent<EnemyController>());
     }
 }

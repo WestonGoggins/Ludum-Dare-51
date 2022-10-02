@@ -14,16 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnAtIndex:
   - {fileID: 0}
+  - {fileID: 908526637832174046, guid: a0cc145af32c2904db05d2dcdd45aeb8, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 908526637832174046, guid: a0cc145af32c2904db05d2dcdd45aeb8, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 908526637832174046, guid: a0cc145af32c2904db05d2dcdd45aeb8, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

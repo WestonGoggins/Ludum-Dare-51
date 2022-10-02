@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour
         Canine,
         Tough
     }
-    public enum EnemyForm
+    private enum EnemyForm
     {
         Overworld,
         Hell,
@@ -21,10 +21,13 @@ public class EnemyController : MonoBehaviour
 
     public EnemyType enemyType = EnemyType.Melee;
     [HideInInspector]
-    public EnemyForm enemyForm;
+    private EnemyForm enemyForm;
     private GameController gameController;
     [HideInInspector]
     public int hp;
+    public int lane;
+    public float speed;
+    public int damage;
 
     void Start()
     {
@@ -55,9 +58,9 @@ public class EnemyController : MonoBehaviour
             Destroy(this);
         }
         if (enemyType == EnemyType.Melee) HandleMelee();
-        if (enemyType == EnemyType.Ranged) HandleRanged();
-        if (enemyType == EnemyType.Canine) HandleCanine();
-        if (enemyType == EnemyType.Tough) HandleTough();
+        else if (enemyType == EnemyType.Ranged) HandleRanged();
+        else if (enemyType == EnemyType.Canine) HandleCanine();
+        else if (enemyType == EnemyType.Tough) HandleTough();
         
     }
 
@@ -68,17 +71,30 @@ public class EnemyController : MonoBehaviour
             if (enemyForm != EnemyForm.Overworld)
             {
                 enemyForm = EnemyForm.Overworld;
-
+                speed = 3.0f;
+                damage = 5;
             }
-            transform.position = new Vector3(transform.position.x - 0.01f * Time.deltaTime, transform.position.y, transform.position.z);
+            transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
         }
         else if (gameController.currentDimension == GameController.Dimension.Hell)
         {
-
+            if (enemyForm != EnemyForm.Overworld)
+            {
+                enemyForm = EnemyForm.Overworld;
+                speed = 4.0f;
+                damage = 5;
+            }
+            transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
         }
         else if (gameController.currentDimension == GameController.Dimension.Faerie)
         {
-
+            if (enemyForm != EnemyForm.Overworld)
+            {
+                enemyForm = EnemyForm.Overworld;
+                speed = 5.0f;
+                damage = 5;
+            }
+            transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
         }
     }
 
