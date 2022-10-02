@@ -165,6 +165,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             transform.Find("Light").GetComponent<Light2D>().enabled = false;
+            target.gameObject.SetActive(false);
             castLength = 0;
         }
     }
@@ -194,6 +195,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             transform.Find("Light").GetComponent<Light2D>().enabled = false;
+            target.gameObject.SetActive(false);
             throwLength = 4.0f;
         }
     }

@@ -15,7 +15,6 @@ public class SpawnerController : MonoBehaviour
 
     private int roundIndex = 0;
 
-    // Start is called before the first frame update
     void Awake()
     {
         if (gameController == null)
@@ -39,7 +38,8 @@ public class SpawnerController : MonoBehaviour
 
     public void IncrementRound()
     {
-        currentRound += 1;
+        //change to currentRound += 1;
+        currentRound = 1;
         roundIndex = 0;
     }
 

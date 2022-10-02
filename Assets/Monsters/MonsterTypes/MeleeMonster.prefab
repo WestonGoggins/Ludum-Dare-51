@@ -7,10 +7,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 208126145672178195, guid: 42e2c376366b40b4d95fc1802a7101ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575889187928432040, guid: 42e2c376366b40b4d95fc1802a7101ac, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575889187928432040, guid: 42e2c376366b40b4d95fc1802a7101ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 685158820, guid: c3e50c5b128367d468e5a374f809386d, type: 3}
     - target: {fileID: 3028772290324636616, guid: 42e2c376366b40b4d95fc1802a7101ac, type: 3}
       propertyPath: m_Name
       value: MeleeMonster
       objectReference: {fileID: 0}
+    - target: {fileID: 4927646000519254289, guid: 42e2c376366b40b4d95fc1802a7101ac, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927646000519254289, guid: 42e2c376366b40b4d95fc1802a7101ac, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4927646000519254289, guid: 42e2c376366b40b4d95fc1802a7101ac, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 685158820, guid: c3e50c5b128367d468e5a374f809386d, type: 3}
     - target: {fileID: 7785746343943863271, guid: 42e2c376366b40b4d95fc1802a7101ac, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -25,7 +49,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7785746343943863271, guid: 42e2c376366b40b4d95fc1802a7101ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 42e2c376366b40b4d95fc1802a7101ac, type: 3}
+--- !u!1 &422197415241520761 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4113012435692102756, guid: 42e2c376366b40b4d95fc1802a7101ac, type: 3}
+  m_PrefabInstance: {fileID: 4381907102893748765}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3396478838969529434
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422197415241520761}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9720b48a9583ea54391ff4d9bdf952df, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
