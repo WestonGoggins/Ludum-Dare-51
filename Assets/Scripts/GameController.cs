@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private float levelTimeStart = 120.0f;
     [SerializeField]
-    private float swapCooldownStart = 0.5f;
+    private float swapCooldownStart = 0.2f;
     [SerializeField]
     private Dimension startingDimension = Dimension.Overworld;
 

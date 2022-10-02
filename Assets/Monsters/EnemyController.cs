@@ -23,7 +23,8 @@ public class EnemyController : MonoBehaviour
     [HideInInspector]
     public EnemyForm enemyForm;
     private GameController gameController;
-    private int hp;
+    [HideInInspector]
+    public int hp;
 
     void Start()
     {
@@ -95,4 +96,9 @@ public class EnemyController : MonoBehaviour
     {
 
     }
+
+    public void isHit(int damageTaken)
+    {
+        hp -= damageTaken;
+    }    
 }
