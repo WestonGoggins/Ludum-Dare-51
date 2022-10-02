@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject swordSwipe;
 
-    public int knightDamage = 10;
+    //public int knightDamage = 10;
     #endregion
 
     #region CLASS VARIABLES
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
         hitBox = GetComponent<BoxCollider2D>();
         if (characterClass == PlayerClass.Knight)
         {
-            hurtBox = transform.Find("Hurtbox").GetComponent<BoxCollider2D>();
+            hurtBox = transform.Find("Sword").GetComponent<BoxCollider2D>();
             hurtBox.enabled = false;
         }
         if (characterClass == PlayerClass.Mage)
@@ -121,24 +121,25 @@ public class PlayerController : MonoBehaviour
             Instantiate(swordSwipe, hurtBox.transform);
         }
 
-        if (hurtBox.isActiveAndEnabled)
-        {
-            ContactFilter2D filter = new ContactFilter2D();
-            filter.NoFilter();
-            Collider2D[] results = new Collider2D[0];
-            int collisions = hurtBox.OverlapCollider(filter, results);
-            for (int i = 0; i < collisions; i++)
-            {
-                if (results[i].gameObject.tag == "Enemy")
-                {
-                    if (!enemiesHit.Contains(results[i].gameObject.GetComponent<EnemyController>()))
-                    {
-                        enemiesHit.Add(results[i].gameObject.GetComponent<EnemyController>());
-                        results[i].gameObject.GetComponent<EnemyController>().isHit(knightDamage);
-                    }
-                }
-            }
-        }
+        //if (hurtBox.isActiveAndEnabled)
+        //{
+        //    ContactFilter2D filter = new ContactFilter2D();
+        //    filter.NoFilter();
+        //    Collider2D[] results = new Collider2D[0];
+        //    int collisions = hurtBox.OverlapCollider(filter, results);
+        //    for (int i = 0; i < collisions; i++)
+        //    {
+        //        if (results[i].gameObject.tag == "Enemy")
+        //        {
+        //            if (!enemiesHit.Contains(results[i].gameObject.GetComponent<EnemyController>()))
+        //            {
+        //                Debug.Log("Hit by Sword");
+        //                enemiesHit.Add(results[i].gameObject.GetComponent<EnemyController>());
+        //                results[i].gameObject.GetComponent<EnemyController>().isHit(knightDamage);
+        //            }
+        //        }
+        //    }
+        //}
     }
 
     private void HandleMage()
@@ -204,5 +205,25 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = pos;
         currentLane = lane;
-    }    
+    }
+
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Enemy")
+        {
+            if (characterClass == PlayerClass.Knight)
+            {
+                gameController.playerHP -= (collider.gameObject.GetComponent<EnemyController>().damage);
+            }
+            else if (characterClass == PlayerClass.Mage)
+            {
+                gameController.playerHP -= (int)(collider.gameObject.GetComponent<EnemyController>().damage * 1.3f);
+            }
+            else if (characterClass == PlayerClass.Barbarian)
+            {
+                gameController.playerHP -= (int)(collider.gameObject.GetComponent<EnemyController>().damage * 1.6f);
+            }
+            Destroy(collider.gameObject);
+        }
+    }
 }

@@ -847,6 +847,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &562466295 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3265617089107135436, guid: db6be13651a8a114799b5c7c1dfca9f1, type: 3}
+  m_PrefabInstance: {fileID: 6110800228226778251}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &562466298
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562466295}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &568954935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,9 +1123,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Axe
       objectReference: {fileID: 0}
+    - target: {fileID: 3528282789917047708, guid: 67b2fff2d6a4f0946a1ea2dd3380663e, type: 3}
+      propertyPath: m_TagString
+      value: PlayerAttack
+      objectReference: {fileID: 0}
     - target: {fileID: 4882668845252710902, guid: 67b2fff2d6a4f0946a1ea2dd3380663e, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67b2fff2d6a4f0946a1ea2dd3380663e, type: 3}
@@ -1435,6 +1465,14 @@ PrefabInstance:
     - target: {fileID: 2647942847706806997, guid: 7089f64fb7adf864f96c413029803fa6, type: 3}
       propertyPath: m_Name
       value: LightningBall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2647942847706806997, guid: 7089f64fb7adf864f96c413029803fa6, type: 3}
+      propertyPath: m_TagString
+      value: PlayerAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256974489571319737, guid: 7089f64fb7adf864f96c413029803fa6, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3342036209622970701, guid: 7089f64fb7adf864f96c413029803fa6, type: 3}
       propertyPath: m_RootOrder
@@ -2329,6 +2367,7 @@ MonoBehaviour:
   - {fileID: 428837291}
   - {fileID: 568954936}
   spawnerController: {fileID: 0}
+  poof: {fileID: 9010780202669608887, guid: c40f3d4863ea2e54ea8d1e042128e3db, type: 3}
   roundTimer: 0
   currentDimension: 0
   swapping: 0
@@ -2677,9 +2716,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3265617089107135436, guid: db6be13651a8a114799b5c7c1dfca9f1, type: 3}
+      propertyPath: m_Name
+      value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265617089107135436, guid: db6be13651a8a114799b5c7c1dfca9f1, type: 3}
+      propertyPath: m_TagString
+      value: PlayerAttack
+      objectReference: {fileID: 0}
     - target: {fileID: 5876761335930155482, guid: db6be13651a8a114799b5c7c1dfca9f1, type: 3}
       propertyPath: m_Size.x
       value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5876761335930155482, guid: db6be13651a8a114799b5c7c1dfca9f1, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5997088975542857154, guid: db6be13651a8a114799b5c7c1dfca9f1, type: 3}
       propertyPath: m_RootOrder

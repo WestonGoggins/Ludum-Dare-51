@@ -39,21 +39,24 @@ public class AxeController : MonoBehaviour
             gameObject.SetActive(false);
         }
 
-        ContactFilter2D filter = new ContactFilter2D();
-        filter.NoFilter();
-        Collider2D[] results = new Collider2D[0];
-        int collisions = hurtBox.OverlapCollider(filter, results);
-        for (int i = 0; i < collisions; i++)
-        {
-            if (results[i].gameObject.tag == "Enemy")
-            {
-                if (!enemiesHit.Contains(results[i].gameObject.GetComponent<EnemyController>()))
-                {
-                    enemiesHit.Add(results[i].gameObject.GetComponent<EnemyController>());
-                    results[i].gameObject.GetComponent<EnemyController>().isHit(damage);
-                }
-            }
-        }
+        //ContactFilter2D filter = new ContactFilter2D();
+        //filter.NoFilter();
+        //Collider2D[] results = new Collider2D[0];
+        //int collisions = hurtBox.OverlapCollider(filter, results);
+        //for (int i = 0; i < collisions; i++)
+        //{
+        //    Debug.Log("Hit by Axe");
+        //    if (results[i].gameObject.tag == "Enemy")
+        //    {
+                
+        //        if (!enemiesHit.Contains(results[i].gameObject.GetComponent<EnemyController>()))
+        //        {
+                    
+        //            enemiesHit.Add(results[i].gameObject.GetComponent<EnemyController>());
+        //            results[i].gameObject.GetComponent<EnemyController>().isHit(damage);
+        //        }
+        //    }
+        //}
     }
 
     public void Reset()

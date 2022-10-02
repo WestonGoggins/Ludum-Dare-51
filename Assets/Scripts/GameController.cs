@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -20,12 +21,15 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private Dimension startingDimension = Dimension.Overworld;
 
+    public int playerHP = 100;
+
     public PlayerController knight;
     public PlayerController mage;
     public PlayerController barbarian;
     public Camera mainCamera;
     public Transform[] lanePositions;
     public SpawnerController spawnerController;
+    public GameObject poof;
     #endregion
 
     #region CLASS VARIABLES
@@ -53,6 +57,10 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        if (playerHP <= 0)
+        {
+            SceneManager.LoadScene("Game Over Scene");
+        }
         HandleTimers();
         HandleSwap();
     }
@@ -124,6 +132,8 @@ public class GameController : MonoBehaviour
                     int knightLane = knight.currentLane;
                     knight.GoToLane(lanePositions[mage.currentLane - 1].position, mage.currentLane);
                     mage.GoToLane(lanePositions[knightLane - 1].position, knightLane);
+                    Instantiate(poof, knight.transform);
+                    Instantiate(poof, mage.transform);
                 }
                 else if (barbarian.inSwapState)
                 {
@@ -134,6 +144,8 @@ public class GameController : MonoBehaviour
                     int knightLane = knight.currentLane;
                     knight.GoToLane(lanePositions[barbarian.currentLane - 1].position, barbarian.currentLane);
                     barbarian.GoToLane(lanePositions[knightLane - 1].position, knightLane);
+                    Instantiate(poof, barbarian.transform);
+                    Instantiate(poof, knight.transform);
                 }
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow) && mage.attackCooldown <= 0.0f)
@@ -148,6 +160,8 @@ public class GameController : MonoBehaviour
                     int mageLane = mage.currentLane;
                     mage.GoToLane(lanePositions[knight.currentLane - 1].position, knight.currentLane);
                     knight.GoToLane(lanePositions[mageLane - 1].position, mageLane);
+                    Instantiate(poof, knight.transform);
+                    Instantiate(poof, mage.transform);
                 }
                 else if (barbarian.inSwapState)
                 {
@@ -158,6 +172,8 @@ public class GameController : MonoBehaviour
                     int mageLane = mage.currentLane;
                     mage.GoToLane(lanePositions[barbarian.currentLane - 1].position, barbarian.currentLane);
                     barbarian.GoToLane(lanePositions[mageLane - 1].position, mageLane);
+                    Instantiate(poof, barbarian.transform);
+                    Instantiate(poof, mage.transform);
                 }
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow) && barbarian.attackCooldown <= 0.0f)
@@ -172,6 +188,8 @@ public class GameController : MonoBehaviour
                     int barbarianLane = barbarian.currentLane;
                     barbarian.GoToLane(lanePositions[knight.currentLane - 1].position, knight.currentLane);
                     knight.GoToLane(lanePositions[barbarianLane - 1].position, barbarianLane);
+                    Instantiate(poof, knight.transform);
+                    Instantiate(poof, barbarian.transform);
                 }
                 else if (mage.inSwapState)
                 {
@@ -182,6 +200,8 @@ public class GameController : MonoBehaviour
                     int barbarianLane = barbarian.currentLane;
                     barbarian.GoToLane(lanePositions[mage.currentLane - 1].position, mage.currentLane);
                     mage.GoToLane(lanePositions[barbarianLane - 1].position, barbarianLane);
+                    Instantiate(poof, barbarian.transform);
+                    Instantiate(poof, mage.transform);
                 }
             }
             
