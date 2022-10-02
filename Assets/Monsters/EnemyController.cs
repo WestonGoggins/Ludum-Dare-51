@@ -16,12 +16,13 @@ public class EnemyController : MonoBehaviour
     {
         Overworld,
         Hell,
-        Faerie
+        Faerie,
+        Null
     }
 
     public EnemyType enemyType = EnemyType.Melee;
-    [HideInInspector]
-    private EnemyForm enemyForm;
+
+    private EnemyForm enemyForm = EnemyForm.Null;
     private GameController gameController;
     [HideInInspector]
     public int hp;
@@ -36,9 +37,6 @@ public class EnemyController : MonoBehaviour
             gameController = FindObjectOfType<GameController>();
         }
 
-        if (gameController.currentDimension == GameController.Dimension.Overworld) enemyForm = EnemyForm.Overworld;
-        else if (gameController.currentDimension == GameController.Dimension.Hell) enemyForm = EnemyForm.Hell;
-        else if (gameController.currentDimension == GameController.Dimension.Faerie) enemyForm = EnemyForm.Faerie;
         else Debug.LogError("Invalid Dimension!");
 
         if (enemyType == EnemyType.Melee) hp = 20;
@@ -78,24 +76,25 @@ public class EnemyController : MonoBehaviour
         }
         else if (gameController.currentDimension == GameController.Dimension.Hell)
         {
-            if (enemyForm != EnemyForm.Overworld)
+            if (enemyForm != EnemyForm.Hell)
             {
-                enemyForm = EnemyForm.Overworld;
-                speed = 4.0f;
+                enemyForm = EnemyForm.Hell;
+                speed = 3.0f;
                 damage = 5;
             }
             transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
         }
         else if (gameController.currentDimension == GameController.Dimension.Faerie)
         {
-            if (enemyForm != EnemyForm.Overworld)
+            if (enemyForm != EnemyForm.Faerie)
             {
-                enemyForm = EnemyForm.Overworld;
-                speed = 5.0f;
+                enemyForm = EnemyForm.Faerie;
+                speed = 3.0f;
                 damage = 5;
             }
             transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
         }
+        else Debug.LogWarning("Invalid Dimension!");
     }
 
     private void HandleRanged()

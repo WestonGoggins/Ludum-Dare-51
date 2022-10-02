@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerController : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour
     private LightningBallController lightningBall;
     private float throwLength = 4.0f;
     private AxeController axe;
+    private Transform target;
     #endregion
 
     void Start()
@@ -64,11 +66,17 @@ public class PlayerController : MonoBehaviour
         {
             lightningBall = transform.Find("LightningBall").GetComponent<LightningBallController>();
             lightningBall.gameObject.SetActive(false);
+            transform.Find("Light").GetComponent<Light2D>().enabled = false;
+            target = transform.Find("Target");
+            target.gameObject.SetActive(false);
         }
         if (characterClass == PlayerClass.Barbarian)
         {
             axe = transform.Find("Axe").GetComponent<AxeController>();
             axe.gameObject.SetActive(false);
+            transform.Find("Light").GetComponent<Light2D>().enabled = false;
+            target = transform.Find("Target");
+            target.gameObject.SetActive(false);
         }
         //implement throwing axe here
         animator = GetComponent<Animator>();
@@ -139,11 +147,14 @@ public class PlayerController : MonoBehaviour
            !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift) && !lightningBall.isActiveAndEnabled)
         {
             if (castLength <= 17.0f) castLength += (6.0f * Time.deltaTime);
-            else gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+            else transform.Find("Light").GetComponent<Light2D>().enabled = true;
+            if (!target.gameObject.activeSelf) target.gameObject.SetActive(true);
+            target.position = new Vector3(transform.position.x + castLength, transform.position.y, transform.position.z);
         }
         else if (Input.GetKeyUp(KeyCode.LeftArrow) && attackCooldown <= 0.0f && !gameController.swapping &&
            !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift) && !lightningBall.isActiveAndEnabled)
         {
+            target.gameObject.SetActive(false);
             attackCooldown = attackCooldownStart;
             lightningBall.gameObject.SetActive(true);
             lightningBall.Reset();
@@ -153,7 +164,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            transform.Find("Light").GetComponent<Light2D>().enabled = false;
             castLength = 0;
         }
     }
@@ -163,12 +174,16 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow) && attackCooldown <= 0.0f && !gameController.swapping &&
            !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift) && !axe.isActiveAndEnabled)
         {
+
             if (throwLength <= 17.0f) throwLength += (6.0f * Time.deltaTime);
-            else gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            else transform.Find("Light").GetComponent<Light2D>().enabled = true;
+            if (!target.gameObject.activeSelf) target.gameObject.SetActive(true);
+            target.position = new Vector3(transform.position.x + throwLength, transform.position.y, transform.position.z);
         }
         else if (Input.GetKeyUp(KeyCode.RightArrow) && attackCooldown <= 0.0f && !gameController.swapping &&
            !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift) && !axe.isActiveAndEnabled)
         {
+            target.gameObject.SetActive(false);
             attackCooldown = attackCooldownStart;
             axe.gameObject.SetActive(true);
             axe.transform.position = new Vector3(transform.position.x + throwLength, transform.position.y, transform.position.z);
@@ -178,7 +193,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            transform.Find("Light").GetComponent<Light2D>().enabled = false;
             throwLength = 4.0f;
         }
     }

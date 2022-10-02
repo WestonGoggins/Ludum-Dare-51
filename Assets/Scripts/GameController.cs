@@ -14,8 +14,7 @@ public class GameController : MonoBehaviour
     #region SERIALIZED FIELDS
     [SerializeField]
     private float dimensionShiftTimeStart = 10.0f;
-    [SerializeField]
-    private float levelTimeStart = 120.0f;
+    public float levelTimeStart = 120.0f;
     [SerializeField]
     private float swapCooldownStart = 0.2f;
     [SerializeField]

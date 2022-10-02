@@ -27,7 +27,7 @@ public class SpawnerController : MonoBehaviour
 
     void Update()
     {
-        if (gameController.roundTimer >= roundIndex)
+        if (gameController.levelTimeStart - gameController.roundTimer >= roundIndex)
         {
             if (rounds[currentRound].spawnAtIndex[roundIndex] != null)
             {
