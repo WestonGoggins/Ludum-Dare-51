@@ -7,6 +7,12 @@ public class DontDestroy : MonoBehaviour
 {
     [HideInInspector]
     public int roundCounter = 0;
+
+    private AudioSource menuMusic;
+    private AudioSource level1Music;
+    private AudioSource level2Music;
+    private AudioSource level3Music;
+
     void Awake()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("DontDestroy");
@@ -15,7 +21,14 @@ public class DontDestroy : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
+        menuMusic = transform.Find("MenuMusic").GetComponent<AudioSource>();
+        level1Music = transform.Find("Level1Music").GetComponent<AudioSource>();
+        level2Music = transform.Find("Level2Music").GetComponent<AudioSource>();
+        level3Music = transform.Find("Level3Music").GetComponent<AudioSource>();
+        menuMusic.enabled = true;
+        level1Music.enabled = false;
+        level2Music.enabled = false;
+        level3Music.enabled = false;
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -26,12 +39,47 @@ public class DontDestroy : MonoBehaviour
 
     public void NextRound()
     {
-        roundCounter += 1;
-        SceneManager.LoadScene("Game Scene");
+        if (roundCounter >= 1) SceneManager.LoadScene("Win Scene");
+        else
+        {
+            roundCounter += 1;
+            SceneManager.LoadScene("Game Scene");
+            switch (roundCounter)
+            {
+                case 1:
+                    menuMusic.enabled = false;
+                    level2Music.enabled = false;
+                    level3Music.enabled = false;
+                    level1Music.enabled = true;
+                    break;
+                case 2:
+                    menuMusic.enabled = false;
+                    level1Music.enabled = false;
+                    level3Music.enabled = false;
+                    level2Music.enabled = true;
+                    break;
+                case 3:
+                    menuMusic.enabled = false;
+                    level1Music.enabled = false;
+                    level2Music.enabled = false;
+                    level3Music.enabled = true;
+                    break;
+                default:
+                    menuMusic.enabled = true;
+                    level1Music.enabled = false;
+                    level2Music.enabled = false;
+                    level3Music.enabled = false;
+                    break;
+            }
+        }
     }
 
     public void ResetRounds()
     {
+        menuMusic.enabled = true;
+        level1Music.enabled = false;
+        level2Music.enabled = false;
+        level3Music.enabled = false;
         roundCounter = 0;
         SceneManager.LoadScene("Main Menu Scene");
     }

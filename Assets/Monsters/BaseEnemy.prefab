@@ -54,6 +54,8 @@ MonoBehaviour:
   speed: 0
   damage: 0
   rotationSpeed: 100
+  isProjectile: 0
+  projectileSpawn: {fileID: 1641550050698367445, guid: e3b9426da9662e04ebceb90e7e1afa14, type: 3}
 --- !u!61 &-340007840782133304
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -267,8 +269,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2092475589
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 1918389089, guid: e1a220c60fa56094dbfca5db4bb8f16c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

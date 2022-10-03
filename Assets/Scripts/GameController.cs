@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -41,6 +42,9 @@ public class GameController : MonoBehaviour
     public Dimension currentDimension;
     [HideInInspector]
     public bool swapping = false;
+    private TextMeshProUGUI hpHUD;
+    private TextMeshProUGUI levelHUD;
+    private TextMeshProUGUI timeHUD;
     #endregion
 
     void Awake()
@@ -52,6 +56,9 @@ public class GameController : MonoBehaviour
         dimensionShiftTimer = dimensionShiftTimeStart;
         roundTimer = levelTimeStart;
         currentDimension = startingDimension;
+        hpHUD = FindObjectOfType<Canvas>().transform.Find("HPCounter").GetComponent<TextMeshProUGUI>();
+        levelHUD = FindObjectOfType<Canvas>().transform.Find("LevelCounter").GetComponent<TextMeshProUGUI>();
+        timeHUD = FindObjectOfType<Canvas>().transform.Find("TimeCounter").GetComponent<TextMeshProUGUI>();
         ChangeToCurrentDimension();
     }
 
@@ -63,6 +70,7 @@ public class GameController : MonoBehaviour
         }
         HandleTimers();
         HandleSwap();
+        HandleUI();
     }
 
     private void HandleTimers()
@@ -214,5 +222,12 @@ public class GameController : MonoBehaviour
             if (mage.inSwapState) mage.inSwapState = false;
             if (barbarian.inSwapState) barbarian.inSwapState = false;
         }
+    }
+
+    private void HandleUI()
+    {
+        hpHUD.text = "HP: " + playerHP;
+        levelHUD.text = "LEVEL " + spawnerController.currentRound.ToString();
+        timeHUD.text = ((int)roundTimer).ToString();
     }
 }

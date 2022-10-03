@@ -31,16 +31,16 @@ public class SpawnerController : MonoBehaviour
     {
         if (gameController.levelTimeStart - gameController.roundTimer >= roundIndex)
         {
-            if (roundIndex > rounds[currentRound].spawnAtIndex.Length - 1)
-            {
-                if (currentRound == rounds.Length)
-                {
-                    SceneManager.LoadScene("Win Scene");
-                }
-                {
-                    EndRound();
-                }
-            }
+            //if (roundIndex > rounds[currentRound].spawnAtIndex.Length - 1)
+            //{
+            //    if (currentRound > rounds.Length)
+            //    {
+            //        SceneManager.LoadScene("Win Scene");
+            //    }
+            //    {
+            //        EndRound();
+            //    }
+            //}
             if (rounds[currentRound].spawnAtIndex[roundIndex] != null)
             {
                 SpawnEnemy(rounds[currentRound].spawnAtIndex[roundIndex]);

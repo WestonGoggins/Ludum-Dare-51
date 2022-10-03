@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow) && attackCooldown <= 0.0f && !gameController.swapping &&
            !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift) && !lightningBall.isActiveAndEnabled)
         {
-            if (castLength <= 17.0f) castLength += (6.0f * Time.deltaTime);
+            if (castLength <= 17.0f) castLength += (9.0f * Time.deltaTime);
             else transform.Find("Light").GetComponent<Light2D>().enabled = true;
             if (!target.gameObject.activeSelf) target.gameObject.SetActive(true);
             target.position = new Vector3(transform.position.x + castLength, transform.position.y, transform.position.z);
@@ -213,15 +213,18 @@ public class PlayerController : MonoBehaviour
         {
             if (characterClass == PlayerClass.Knight)
             {
+                animator.Play("knighthurt");
                 gameController.playerHP -= (collider.gameObject.GetComponent<EnemyController>().damage);
             }
             else if (characterClass == PlayerClass.Mage)
             {
-                gameController.playerHP -= (int)(collider.gameObject.GetComponent<EnemyController>().damage * 1.3f);
+                animator.Play("magehurt");
+                gameController.playerHP -= (int)(collider.gameObject.GetComponent<EnemyController>().damage * 1.5f);
             }
             else if (characterClass == PlayerClass.Barbarian)
             {
-                gameController.playerHP -= (int)(collider.gameObject.GetComponent<EnemyController>().damage * 1.6f);
+                animator.Play("barbarianhurt");
+                gameController.playerHP -= (int)(collider.gameObject.GetComponent<EnemyController>().damage * 2f);
             }
             Destroy(collider.gameObject);
         }
