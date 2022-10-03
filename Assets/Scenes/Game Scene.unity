@@ -495,6 +495,8 @@ MonoBehaviour:
   rounds:
   - {fileID: 11400000, guid: 1aaba89576538944ea1af0e481f60259, type: 2}
   - {fileID: 11400000, guid: 28d1e2662a29c214ca30c49246d6899e, type: 2}
+  - {fileID: 11400000, guid: e3deb3de0ab2052468fbac823c1931b1, type: 2}
+  - {fileID: 11400000, guid: d767124fe7888ad41952db6ce729b5d5, type: 2}
   currentRound: 0
   gameController: {fileID: 0}
   activeEnemies: []

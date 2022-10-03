@@ -6,7 +6,7 @@ public class LightningBallController : MonoBehaviour
 {
     public float castLength = 0.0f;
     public int damage = 5;
-    public float speed = 5.0f;
+    public float speed = 9.0f;
     private float counter = 0.0f;
     private List<EnemyController> enemiesHit;
     [HideInInspector]

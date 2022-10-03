@@ -39,7 +39,7 @@ public class DontDestroy : MonoBehaviour
 
     public void NextRound()
     {
-        if (roundCounter >= 1) SceneManager.LoadScene("Win Scene");
+        if (roundCounter >= 3) SceneManager.LoadScene("Win Scene");
         else
         {
             roundCounter += 1;
@@ -51,26 +51,66 @@ public class DontDestroy : MonoBehaviour
                     level2Music.enabled = false;
                     level3Music.enabled = false;
                     level1Music.enabled = true;
+                    level1Music.Play();
                     break;
                 case 2:
                     menuMusic.enabled = false;
                     level1Music.enabled = false;
                     level3Music.enabled = false;
                     level2Music.enabled = true;
+                    level2Music.Play();
                     break;
                 case 3:
                     menuMusic.enabled = false;
                     level1Music.enabled = false;
                     level2Music.enabled = false;
                     level3Music.enabled = true;
+                    level3Music.Play();
                     break;
                 default:
                     menuMusic.enabled = true;
                     level1Music.enabled = false;
                     level2Music.enabled = false;
                     level3Music.enabled = false;
+                    menuMusic.Play();
                     break;
             }
+        }
+    }
+
+    public void TryRound()
+    {
+        SceneManager.LoadScene("Game Scene");
+        switch (roundCounter)
+        {
+            case 1:
+                menuMusic.enabled = false;
+                level2Music.enabled = false;
+                level3Music.enabled = false;
+                level1Music.enabled = true;
+                level1Music.Play();
+                break;
+            case 2:
+                menuMusic.enabled = false;
+                level1Music.enabled = false;
+                level3Music.enabled = false;
+                level2Music.enabled = true;
+                level2Music.Play();
+                break;
+            case 3:
+                menuMusic.enabled = false;
+                level1Music.enabled = false;
+                level2Music.enabled = false;
+                level3Music.enabled = true;
+                level3Music.Play();
+                break;
+            default:
+                menuMusic.enabled = true;
+                level1Music.enabled = false;
+                level2Music.enabled = false;
+                level3Music.enabled = false;
+                menuMusic.Play();
+                break;
         }
     }
 

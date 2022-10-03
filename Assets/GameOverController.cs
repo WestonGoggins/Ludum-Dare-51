@@ -19,7 +19,8 @@ public class GameOverController : MonoBehaviour
 
     public void TryAgain()
     {
-        SceneManager.LoadScene("Game Scene");
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("DontDestroy");
+        objs[0].GetComponent<DontDestroy>().TryRound();
     }
 
     public void GoToMainMenu()

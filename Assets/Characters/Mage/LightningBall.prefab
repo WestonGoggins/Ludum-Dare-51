@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   castLength: 0
   damage: 5
-  speed: 5
+  speed: 9
   hurtBox: {fileID: 0}
 --- !u!61 &3256974489571319737
 BoxCollider2D:

@@ -241,7 +241,7 @@ public class EnemyController : MonoBehaviour
             {
                 enemyForm = EnemyForm.Overworld;
                 animator.Play("caninemonsteroverworld");
-                speed = 2.5f + speedMod;
+                speed = 2.8f + speedMod;
                 damage = 10;
             }
             transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
@@ -252,7 +252,7 @@ public class EnemyController : MonoBehaviour
             {
                 enemyForm = EnemyForm.Hell;
                 animator.Play("caninemonsterhell");
-                speed = 3.3f + speedMod;
+                speed = 3.6f + speedMod;
                 damage = 5;
             }
             transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
@@ -263,7 +263,7 @@ public class EnemyController : MonoBehaviour
             {
                 enemyForm = EnemyForm.Faerie;
                 animator.Play("caninemonsterfaerie");
-                speed = 2.5f + speedMod;
+                speed = 2.8f + speedMod;
                 damage = 5;
             }
             transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
@@ -278,8 +278,8 @@ public class EnemyController : MonoBehaviour
             if (enemyForm != EnemyForm.Overworld)
             {
                 enemyForm = EnemyForm.Overworld;
-                animator.Play("meleemonsteroverworld");
-                speed = 1.5f + speedMod;
+                animator.Play("toughmonsteroverworld");
+                speed = 1.0f;
                 damage = 20;
             }
             transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
@@ -289,8 +289,8 @@ public class EnemyController : MonoBehaviour
             if (enemyForm != EnemyForm.Hell)
             {
                 enemyForm = EnemyForm.Hell;
-                animator.Play("meleemonsterhell");
-                speed = 2.3f + speedMod;
+                animator.Play("toughmonsterhell");
+                speed = 1.8f;
                 damage = 10;
             }
             transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
@@ -300,8 +300,8 @@ public class EnemyController : MonoBehaviour
             if (enemyForm != EnemyForm.Faerie)
             {
                 enemyForm = EnemyForm.Faerie;
-                animator.Play("meleemonsterfaerie");
-                speed = 1.5f + speedMod;
+                animator.Play("toughmonsterfaerie");
+                speed = 1.0f;
                 damage = 10;
             }
             transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
