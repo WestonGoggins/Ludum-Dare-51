@@ -42,6 +42,7 @@ public class EnemyController : MonoBehaviour
     private float lifeTime = 0.0f;
     private float projectileTimer = 3.0f;
     public GameObject projectileSpawn;
+    public float teleportTimer = 100.0f;
 
     #region AUDIOCLIPS
     //private AudioSource audioSource;
@@ -62,6 +63,8 @@ public class EnemyController : MonoBehaviour
         maxWalk = 3.0f + Random.Range(0.0f, 2.0f);
         speedMod = Random.Range(-0.30f, 0.30f);
         rotationSpeed += speedMod * 5;
+        teleportTimer = 3.0f + Random.Range(0.0f, 4.0f);
+
 
         if (enemyType == EnemyType.Melee) hp = 15;
         else if (enemyType == EnemyType.Ranged) hp = 10;
@@ -72,6 +75,7 @@ public class EnemyController : MonoBehaviour
 
     void LateUpdate()
     {
+        
         lifeTime += Time.deltaTime;
         if (!isProjectile)
         {
@@ -119,7 +123,7 @@ public class EnemyController : MonoBehaviour
         else if (enemyType == EnemyType.Canine) HandleCanine();
         else if (enemyType == EnemyType.Tough) HandleTough();
         else if (enemyType == EnemyType.Projectile) HandleProjectile();
-        
+        CheckTeleport();
     }
 
     private void HandleMelee()
@@ -131,7 +135,7 @@ public class EnemyController : MonoBehaviour
                 enemyForm = EnemyForm.Overworld;
                 animator.Play("meleemonsteroverworld");
                 speed = 1.5f + speedMod;
-                damage = 5;
+                damage = 10;
             }
             transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
         }
@@ -141,7 +145,7 @@ public class EnemyController : MonoBehaviour
             {
                 enemyForm = EnemyForm.Hell;
                 animator.Play("meleemonsterhell");
-                speed = 1.8f + speedMod;
+                speed = 2.3f + speedMod;
                 damage = 5;
             }
             transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
@@ -152,7 +156,7 @@ public class EnemyController : MonoBehaviour
             {
                 enemyForm = EnemyForm.Faerie;
                 animator.Play("meleemonsterfaerie");
-                speed = 2.1f + speedMod;
+                speed = 1.5f + speedMod;
                 damage = 5;
             }
             transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
@@ -168,7 +172,7 @@ public class EnemyController : MonoBehaviour
             {
                 enemyForm = EnemyForm.Overworld;
                 animator.Play("rangedmonsteroverworld");
-                speed = 1.1f + speedMod;
+                speed = 1.0f + speedMod;
                 damage = 0;
             }
             if (lifeTime < maxWalk) transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
@@ -179,6 +183,7 @@ public class EnemyController : MonoBehaviour
                 {
                     GameObject temp = Instantiate(projectileSpawn, transform.parent);
                     temp.transform.position = transform.position;
+                    temp.GetComponent<EnemyController>().damage = 4;
                     projectileTimer = 6.0f;
                 }
             }
@@ -189,7 +194,7 @@ public class EnemyController : MonoBehaviour
             {
                 enemyForm = EnemyForm.Hell;
                 animator.Play("rangedmonsterhell");
-                speed = 1.2f + speedMod;
+                speed = 1.8f + speedMod;
                 damage = 0;
             }
             if (lifeTime < maxWalk) transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
@@ -210,7 +215,7 @@ public class EnemyController : MonoBehaviour
             {
                 enemyForm = EnemyForm.Faerie;
                 animator.Play("rangedmonsterfaerie");
-                speed = 1.3f + speedMod;
+                speed = 1.0f + speedMod;
                 damage = 0;
             }
             if (lifeTime < maxWalk) transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
@@ -230,18 +235,84 @@ public class EnemyController : MonoBehaviour
 
     private void HandleCanine()
     {
-
+        if (gameController.currentDimension == GameController.Dimension.Overworld)
+        {
+            if (enemyForm != EnemyForm.Overworld)
+            {
+                enemyForm = EnemyForm.Overworld;
+                animator.Play("caninemonsteroverworld");
+                speed = 2.5f + speedMod;
+                damage = 10;
+            }
+            transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
+        }
+        else if (gameController.currentDimension == GameController.Dimension.Hell)
+        {
+            if (enemyForm != EnemyForm.Hell)
+            {
+                enemyForm = EnemyForm.Hell;
+                animator.Play("caninemonsterhell");
+                speed = 3.3f + speedMod;
+                damage = 5;
+            }
+            transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
+        }
+        else if (gameController.currentDimension == GameController.Dimension.Faerie)
+        {
+            if (enemyForm != EnemyForm.Faerie)
+            {
+                enemyForm = EnemyForm.Faerie;
+                animator.Play("caninemonsterfaerie");
+                speed = 2.5f + speedMod;
+                damage = 5;
+            }
+            transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
+        }
+        else Debug.LogWarning("Invalid Dimension!");
     }
 
     private void HandleTough()
     {
-
+        if (gameController.currentDimension == GameController.Dimension.Overworld)
+        {
+            if (enemyForm != EnemyForm.Overworld)
+            {
+                enemyForm = EnemyForm.Overworld;
+                animator.Play("meleemonsteroverworld");
+                speed = 1.5f + speedMod;
+                damage = 20;
+            }
+            transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
+        }
+        else if (gameController.currentDimension == GameController.Dimension.Hell)
+        {
+            if (enemyForm != EnemyForm.Hell)
+            {
+                enemyForm = EnemyForm.Hell;
+                animator.Play("meleemonsterhell");
+                speed = 2.3f + speedMod;
+                damage = 10;
+            }
+            transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
+        }
+        else if (gameController.currentDimension == GameController.Dimension.Faerie)
+        {
+            if (enemyForm != EnemyForm.Faerie)
+            {
+                enemyForm = EnemyForm.Faerie;
+                animator.Play("meleemonsterfaerie");
+                speed = 1.5f + speedMod;
+                damage = 10;
+            }
+            transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
+        }
+        else Debug.LogWarning("Invalid Dimension!");
     }
 
     private void HandleProjectile()
     {
         speed = 4.0f;
-        damage = 2;
+        if (damage < 2) damage = 2;
         transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
     }
 
@@ -273,5 +344,67 @@ public class EnemyController : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void CheckTeleport()
+    {
+        teleportTimer -= Time.deltaTime;
+        if (enemyForm == EnemyForm.Faerie)
+        {
+            if (teleportTimer <= 0.0f)
+            {
+                int rand = Random.Range(0, 2);
+                GameObject poof = Instantiate(gameController.poof, gameController.transform);
+                poof.transform.position = transform.position;
+                if (transform.position.y > 0.0f)
+                {
+                    switch (rand)
+                    {
+                        case 0:
+                            transform.position = new Vector3(transform.position.x, transform.position.y - 2, transform.position.z);
+                            break;
+                        case 1:
+                            transform.position = new Vector3(transform.position.x, transform.position.y - 4, transform.position.z);
+                            break;
+                        default:
+                            Debug.LogWarning("Random is doing something wrong...");
+                            break;
+                    }
+                }
+                else  if (transform.position.y < 0.0f && transform.position.y > -2.0f)
+                {
+                    switch (rand)
+                    {
+                        case 0:
+                            transform.position = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+                            break;
+                        case 1:
+                            transform.position = new Vector3(transform.position.x, transform.position.y - 2, transform.position.z);
+                            break;
+                        default:
+                            Debug.LogWarning("Random is doing something wrong...");
+                            break;
+                    }
+                }
+                else if (transform.position.y < -2.0f)
+                {
+                    switch (rand)
+                    {
+                        case 0:
+                            transform.position = new Vector3(transform.position.x, transform.position.y + 4, transform.position.z);
+                            break;
+                        case 1:
+                            transform.position = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+                            break;
+                        default:
+                            Debug.LogWarning("Random is doing something wrong...");
+                            break;
+                    }
+                }
+                GameObject poof2 = Instantiate(gameController.poof, gameController.transform);
+                poof2.transform.position = transform.position;
+            }
+        }
+        if (teleportTimer <= 0.0f) teleportTimer = 3.0f + Random.Range(0.0f, 4.0f); 
     }
 }

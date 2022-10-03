@@ -17,6 +17,16 @@ public class TutorialMenuController : MonoBehaviour
         
     }
 
+    public void GoToTutorialMenuScene()
+    {
+        SceneManager.LoadScene("Tutorial Menu Scene");
+    }
+
+    public void GoToTutorialMenu2Scene()
+    {
+        SceneManager.LoadScene("Tutorial Menu Scene 2");
+    }
+
     public void GoToGameScene()
     {
         GameObject[] objs = GameObject.FindGameObjectsWithTag("DontDestroy");
