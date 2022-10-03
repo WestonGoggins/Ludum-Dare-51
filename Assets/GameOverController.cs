@@ -17,8 +17,15 @@ public class GameOverController : MonoBehaviour
         
     }
 
+    public void TryAgain()
+    {
+        SceneManager.LoadScene("Game Scene");
+    }
+
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene("Main Menu Scene");
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("DontDestroy");
+        if (objs.Length > 0) objs[0].GetComponent<DontDestroy>().ResetRounds();
+        else SceneManager.LoadScene("Main Menu Scene");
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnerController : MonoBehaviour
 {
@@ -17,17 +18,29 @@ public class SpawnerController : MonoBehaviour
 
     void Awake()
     {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("DontDestroy");
+        if (objs.Length > 0) currentRound = objs[0].GetComponent<DontDestroy>().roundCounter;
+        else currentRound = 1;
         if (gameController == null)
         {
             gameController = FindObjectOfType<GameController>();
         }
-        if (currentRound == 0) currentRound = 1;
     }
 
     void Update()
     {
         if (gameController.levelTimeStart - gameController.roundTimer >= roundIndex)
         {
+            if (roundIndex > rounds[currentRound].spawnAtIndex.Length - 1)
+            {
+                if (currentRound == rounds.Length)
+                {
+                    SceneManager.LoadScene("Win Scene");
+                }
+                {
+                    EndRound();
+                }
+            }
             if (rounds[currentRound].spawnAtIndex[roundIndex] != null)
             {
                 SpawnEnemy(rounds[currentRound].spawnAtIndex[roundIndex]);
@@ -36,11 +49,10 @@ public class SpawnerController : MonoBehaviour
         }
     }
 
-    public void IncrementRound()
+    public void EndRound()
     {
-        //change to currentRound += 1;
-        currentRound = 1;
-        roundIndex = 0;
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("DontDestroy");
+        objs[0].GetComponent<DontDestroy>().NextRound();
     }
 
     private void SpawnEnemy(EnemyController enemy)

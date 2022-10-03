@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
     #region SERIALIZED FIELDS
     [SerializeField]
     private float dimensionShiftTimeStart = 10.0f;
-    public float levelTimeStart = 120.0f;
+    public float levelTimeStart = 90.0f;
     [SerializeField]
     private float swapCooldownStart = 0.2f;
     [SerializeField]
@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour
         roundTimer -= Time.deltaTime;
         if (roundTimer <= 0.0f)
         {
-            spawnerController.IncrementRound();
+            spawnerController.EndRound();
         }
         dimensionShiftTimer -= Time.deltaTime;
         if (dimensionShiftTimer < 0.0f)
@@ -104,13 +104,14 @@ public class GameController : MonoBehaviour
         switch (currentDimension)
         {
             case Dimension.Overworld:
-                mainCamera.backgroundColor = Color.green;
+                Color tempColor = new Color(30f, 139f, 183f);
+                mainCamera.backgroundColor = Color.cyan;
                 break;
             case Dimension.Hell:
-                mainCamera.backgroundColor = Color.red;
+                mainCamera.backgroundColor = Color.red;//new Color(67f, 11f, 12f);
                 break;
             case Dimension.Faerie:
-                mainCamera.backgroundColor = Color.blue;
+                mainCamera.backgroundColor = Color.blue;//new Color(51f, 29f, 96f);
                 break;
         }
     }

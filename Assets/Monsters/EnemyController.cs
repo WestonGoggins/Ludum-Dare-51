@@ -32,8 +32,10 @@ public class EnemyController : MonoBehaviour
     public int damage;
     private float speedMod;
     private Transform render;
+    private SpriteRenderer renderSprite;
     private bool rotateRight = true;
     public float rotationSpeed = 10.0f;
+    private float hitTimer = 0.0f;
 
     #region AUDIOCLIPS
     //private AudioSource audioSource;
@@ -49,6 +51,7 @@ public class EnemyController : MonoBehaviour
         //audioSource = gameController.GetComponent<AudioSource>();
         animator = gameObject.GetComponentInChildren<Animator>();
         render = transform.Find("Sprite");
+        renderSprite = render.GetComponent<SpriteRenderer>();
         #region AUDIOCLIPS
         //lightningBallClip = Resources.Load<AudioClip>("electric");
         #endregion
@@ -92,6 +95,8 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (hitTimer > 0.0f) hitTimer -= Time.deltaTime;
+        else renderSprite.color = Color.white;
         if (enemyType == EnemyType.Melee) HandleMelee();
         else if (enemyType == EnemyType.Ranged) HandleRanged();
         else if (enemyType == EnemyType.Canine) HandleCanine();
@@ -108,7 +113,7 @@ public class EnemyController : MonoBehaviour
                 enemyForm = EnemyForm.Overworld;
                 animator.Play("meleemonsteroverworld");
                 speed = 1.5f + speedMod;
-                damage = 50;
+                damage = 5;
             }
             transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
         }
@@ -119,7 +124,7 @@ public class EnemyController : MonoBehaviour
                 enemyForm = EnemyForm.Hell;
                 animator.Play("meleemonsterhell");
                 speed = 1.5f + speedMod;
-                damage = 50;
+                damage = 5;
             }
             transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
         }
@@ -130,7 +135,7 @@ public class EnemyController : MonoBehaviour
                 enemyForm = EnemyForm.Faerie;
                 animator.Play("meleemonsterfaerie");
                 speed = 1.5f + speedMod;
-                damage = 50;
+                damage = 5;
             }
             transform.position = new Vector3(transform.position.x - (speed * Time.deltaTime), transform.position.y, transform.position.z);
         }
@@ -162,6 +167,8 @@ public class EnemyController : MonoBehaviour
         Debug.Log("Hit Detected");
         if (collision.gameObject.tag == "PlayerAttack")
         {
+            renderSprite.color = Color.red;
+            hitTimer = 0.2f;
             if (collision.gameObject.name == "Sword")
             {
                 hp -= 10;

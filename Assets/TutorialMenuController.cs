@@ -19,11 +19,13 @@ public class TutorialMenuController : MonoBehaviour
 
     public void GoToGameScene()
     {
-        SceneManager.LoadScene("Game Scene");
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("DontDestroy");
+        objs[0].GetComponent<DontDestroy>().NextRound();
     }
 
     public void GoToMainMenuScene()
     {
-        SceneManager.LoadScene("Main Menu Scene");
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("DontDestroy");
+        objs[0].GetComponent<DontDestroy>().ResetRounds();
     }
 }
